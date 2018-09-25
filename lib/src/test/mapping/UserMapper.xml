@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test.IDao.UserMapper" >
+  <resultMap id="BaseResultMap" type="test.domain.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="card_no" property="cardNo" jdbcType="INTEGER" />
+    <result column="app_type" property="appType" jdbcType="INTEGER" />
+    <result column="warn_no" property="warnNo" jdbcType="INTEGER" />
+    <result column="warn_time" property="warnTime" jdbcType="VARCHAR" />
+    <result column="duration_time" property="durationTime" jdbcType="VARCHAR" />
+    <result column="warn_info" property="warnInfo" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="warn_state" property="warnState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ip, card_no, app_type, warn_no, warn_time, duration_time, warn_info, remark, 
+    create_time, modify_time, warn_state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vac_t_alarminfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vac_t_alarminfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="test.domain.User" >
+    insert into vac_t_alarminfo (id, ip, card_no, 
+      app_type, warn_no, warn_time, 
+      duration_time, warn_info, remark, 
+      create_time, modify_time, warn_state
+      )
+    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{cardNo,jdbcType=INTEGER}, 
+      #{appType,jdbcType=INTEGER}, #{warnNo,jdbcType=INTEGER}, #{warnTime,jdbcType=VARCHAR}, 
+      #{durationTime,jdbcType=VARCHAR}, #{warnInfo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{warnState,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="test.domain.User" >
+    insert into vac_t_alarminfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+      <if test="appType != null" >
+        app_type,
+      </if>
+      <if test="warnNo != null" >
+        warn_no,
+      </if>
+      <if test="warnTime != null" >
+        warn_time,
+      </if>
+      <if test="durationTime != null" >
+        duration_time,
+      </if>
+      <if test="warnInfo != null" >
+        warn_info,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="warnState != null" >
+        warn_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=INTEGER},
+      </if>
+      <if test="appType != null" >
+        #{appType,jdbcType=INTEGER},
+      </if>
+      <if test="warnNo != null" >
+        #{warnNo,jdbcType=INTEGER},
+      </if>
+      <if test="warnTime != null" >
+        #{warnTime,jdbcType=VARCHAR},
+      </if>
+      <if test="durationTime != null" >
+        #{durationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="warnInfo != null" >
+        #{warnInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="warnState != null" >
+        #{warnState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="test.domain.User" >
+    update vac_t_alarminfo
+    <set >
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=INTEGER},
+      </if>
+      <if test="appType != null" >
+        app_type = #{appType,jdbcType=INTEGER},
+      </if>
+      <if test="warnNo != null" >
+        warn_no = #{warnNo,jdbcType=INTEGER},
+      </if>
+      <if test="warnTime != null" >
+        warn_time = #{warnTime,jdbcType=VARCHAR},
+      </if>
+      <if test="durationTime != null" >
+        duration_time = #{durationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="warnInfo != null" >
+        warn_info = #{warnInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="warnState != null" >
+        warn_state = #{warnState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="test.domain.User" >
+    update vac_t_alarminfo
+    set ip = #{ip,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=INTEGER},
+      app_type = #{appType,jdbcType=INTEGER},
+      warn_no = #{warnNo,jdbcType=INTEGER},
+      warn_time = #{warnTime,jdbcType=VARCHAR},
+      duration_time = #{durationTime,jdbcType=VARCHAR},
+      warn_info = #{warnInfo,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      warn_state = #{warnState,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
